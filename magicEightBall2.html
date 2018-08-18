@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+            .black {
+                border: solid black 3px; 
+                border-radius: 50%;
+                width: 300px;
+                height: 300px;
+                background-color: black;
+                margin: 10px;
+                padding: 25px;
+            }
+            #second {
+                float: left;
+            }
+            #eight {
+                border-radius: 50%;
+                width: 150px;
+                height: 150px;
+                color: black;
+                font-family:monospace;
+                background-color: white;
+                margin: 75px;
+                font-size: 72px;
+            }
+            .black2 {
+                margin: 10px;
+                padding: 25px;
+                border: solid black 3px;
+                border-radius: 50%;
+                background-color: black;
+                color: blue;
+                height: 300px;
+                width: 300px;
+            }
+            #display {
+                position: relative;
+                text-align: center;
+                top: 10px;
+                color: white;
+            }
+            .glass {
+                margin: inherit;
+                left: 38px;
+                top: 35px;
+                padding: 50px;
+                height: 100px;
+                width: 100px;
+                border-radius: 100%;
+                position:relative;
+                background-color: darkblue;
+            }
+            
+            
+            
+        </style>
+        <title>A Magic Eight Ball</title>
+    </head>
+    <body>
+        <h3>Ask a question and press the '8' to reveal your answer!</h3>
+        
+        
+        <div class="black">
+            <button id="eight" onclick="ask()">8</button>
+        </div>
+        <div class="black2" id="second">
+            <div class="glass">
+                <p id="display"></p>
+            </div>
+        </div>
+        
+        <script>
+            var eightBall = {
+                index: 0,
+                advice: ["It is certain.","It is decidedly so.","Without a doubt.","Yes - definitely","You may rely on it","As I see it, yes.","Most likely.","Outlook good.","Yes","Signs point to yes.","Reply hazy, try again.","Ask again later.","Better not tell you now.","Cannot predict now.","Concetrate and ask again.","Don't count on it.","My reply is no.","My sources say no.","Outlook not so good.","Very doubtful"],
+                shake: function () {
+                    this.index = Math.floor(Math.random() * this.advice.length);
+                },
+                look: function () {
+                    this.shake();
+                    return this.advice[this.index];
+                }
+            };
+            
+            function ask(){
+                var string = eightBall.look();
+                console.log(string);
+                document.getElementById("display").innerHTML = string;
+            }
+            
+            
+            
+        </script>
+    </body>
+
+</html>
